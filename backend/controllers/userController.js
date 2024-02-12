@@ -15,7 +15,11 @@ const createUser = asyncHandler(async (req, res) => {
 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
-  const newUser = new User({ username, email, password: hashedPassword });
+  const newUser = new User({
+    username,
+    email,
+    password: hashedPassword,
+  });
 
   try {
     await newUser.save();
@@ -68,4 +72,9 @@ const logoutCurrentUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
 });
 
-export { createUser, loginUser, logoutCurrentUser };
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({});
+  res.json(users);
+});
+
+export { createUser, loginUser, logoutCurrentUser, getAllUsers };
