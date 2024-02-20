@@ -48,7 +48,7 @@ const Navigation = () => {
 
   return (
     <div
-      style={{ zIndex: 999 }}
+      style={{ zIndex: 9999 }}
       className={`${
         showSideBar ? "hidden" : "flex"
       } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-white bg-[#000] w-[4%] hover:w-[15%] h-[100vh]  fixed `}
@@ -86,44 +86,42 @@ const Navigation = () => {
             </span>{" "}
           </div>
         </Link>
-
-        <div className="relative">
-          <button
-            onClick={toggleDropdown}
-            className="flex items-center text-gray-800 focus:outline-none"
-          >
-            {userInfo ? (
-              <span className="text-white">{userInfo.username}</span>
-            ) : (
-              <></>
-            )}
-          </button>
-        </div>
-
-        <ul>
-          <li>
-            <Link to="/login" className="flex relative">
-              <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
-                <AiOutlineLogin className="mt-[3rem] mr-2" size={20} />
-                <span className="hidden nav-item-name mt-[3rem]">
-                  Login
-                </span>{" "}
-              </div>
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/register" className="flex relative">
-              <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
-                <AiOutlineUserAdd className="mt-[3rem] mr-2" size={20} />
-                <span className="hidden nav-item-name mt-[3rem]">
-                  Register
-                </span>{" "}
-              </div>
-            </Link>
-          </li>
-        </ul>
       </div>
+
+      <div className="relative">
+        <button
+          onClick={toggleDropdown}
+          className="flex items-center text-gray-800 focus:outline-none"
+        >
+          {userInfo ? (
+            <span className="text-white">{userInfo.username}</span>
+          ) : (
+            <></>
+          )}
+        </button>
+      </div>
+
+      <ul>
+        <li>
+          <Link to="/login" className="flex relative">
+            <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+              <AiOutlineLogin className="mt-[3rem] mr-2" size={20} />
+              <span className="hidden nav-item-name mt-[3rem]">Login</span>{" "}
+            </div>
+          </Link>
+        </li>
+
+        <li>
+          <Link to="/register" className="flex relative">
+            <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+              <AiOutlineUserAdd className="mt-[3rem] mr-2" size={20} />
+              <span className="hidden nav-item-name mt-[3rem]">
+                Register
+              </span>{" "}
+            </div>
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };
