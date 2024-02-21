@@ -51,4 +51,15 @@ const removeCategory = asyncHandler(async (req, res) => {
   }
 });
 
-export { createCategory, updateCategory, removeCategory };
+const listCategory = asyncHandler(async (req, res) => {
+  try {
+    const categories = await Category.find({});
+
+    res.json(categories);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server error" });
+  }
+});
+
+export { createCategory, updateCategory, removeCategory, listCategory };
