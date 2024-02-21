@@ -36,17 +36,17 @@ const Login = () => {
       navigate(redirect);
     } catch (err) {
       console.log("err", err);
-      //   toast.error(err?.data?.message || err.message);
+      toast.error(err?.data?.message || err.message);
     }
   };
 
   return (
     <div>
-      <section onSubmit={submitHandler} className="pl-[10rem] flex flex-wrap">
+      <section className="pl-[10rem] flex flex-wrap">
         <div className="mr-[4rem] mt-[5rem]">
           <h1 className="text-2xl font-semibold mb-4">Sign In</h1>
 
-          <form className="container w-[40rem]">
+          <form onSubmit={submitHandler} className="container w-[40rem]">
             <div className="my-[2rem]">
               <label
                 htmlFor="email"
