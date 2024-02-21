@@ -40,4 +40,15 @@ const updateCategory = asyncHandler(async (req, res) => {
   }
 });
 
-export { createCategory, updateCategory };
+const removeCategory = asyncHandler(async (req, res) => {
+  try {
+    const removed = await Category.findByIdAndDelete(req.params.categoryId);
+
+    res.json(removed);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server error" });
+  }
+});
+
+export { createCategory, updateCategory, removeCategory };
