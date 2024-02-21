@@ -62,4 +62,24 @@ const listCategory = asyncHandler(async (req, res) => {
   }
 });
 
-export { createCategory, updateCategory, removeCategory, listCategory };
+const readCategory = asyncHandler(async (req, res) => {
+  try {
+    const category = await Category.findOne({ _id: req.params.categoryId });
+    if (!category) {
+      return res.status(404).json({ error: "Category not found" });
+    }
+
+    res.json(category);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server error" });
+  }
+});
+
+export {
+  createCategory,
+  updateCategory,
+  removeCategory,
+  listCategory,
+  readCategory,
+};
